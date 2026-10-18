@@ -1,0 +1,113 @@
+{
+    "$schema": "https://opencode.ai/config.json",
+    "provider": {
+        "ollama": {
+            "npm": "@ai-sdk/openai-compatible",
+            "name": "Ollama (local)",
+            "options": {
+                "baseURL": "http://localhost:11434/v1"
+            },
+            "models": {
+                "qwen2.5-coder:7b": {
+                    "name": "Qwen2.5 Coder 7B"
+                }
+            }
+        }
+    },
+    "model": "ollama/qwen2.5-coder:7b",
+    "mcp": {
+        "codekit": {
+            "type": "local",
+            "command": [
+                "C:\\dhash\\hackathon n events\\Research Arena\\practice space\\venv\\Scripts\\python.exe",
+                "C:\\dhash\\hackathon n events\\Research Arena\\practice space\\python_server.py"
+            ],
+            "enabled": true,
+            "environment": {
+                "CODEKIT_ROOT": "C:\\dhash\\hackathon n events\\Research Arena\\practice space"
+            }
+        }
+    },
+    "permission": {
+        "*": "ask",
+        "read": "allow",
+        "grep": "allow",
+        "glob": "allow",
+        "list": "allow",
+        "edit": "ask",
+        "webfetch": "deny",
+        "websearch": "deny",
+        "external_directory": "deny",
+        "doom_loop": "ask",
+        "codekit_*": "allow",
+        "codekit_remove_function_definition": "ask",
+        "bash": {
+            "*": "ask",
+            "ls*": "allow",
+            "dir*": "allow",
+            "Get-ChildItem*": "allow",
+            "pwd": "allow",
+            "git status*": "allow",
+            "git diff*": "allow",
+            "git log*": "allow",
+            "pip *": "deny",
+            "pip3 *": "deny",
+            "uv *": "deny",
+            "conda *": "deny",
+            "npm *": "deny",
+            "python -m pip*": "deny",
+            "py -m pip*": "deny",
+            "git checkout*": "deny",
+            "git reset*": "deny",
+            "git commit*": "deny",
+            "git revert*": "deny",
+            "git stash*": "deny",
+            "git clean*": "deny",
+            "git restore*": "deny",
+            "rm *": "deny",
+            "del *": "deny",
+            "Remove-Item*": "deny",
+            "ri *": "deny",
+            "Stop-Process*": "deny",
+            "kill*": "deny",
+            "taskkill*": "deny",
+            "curl *": "deny",
+            "wget *": "deny",
+            "iwr *": "deny",
+            "Invoke-WebRequest*": "deny"
+        }
+    },
+    "agent": {
+        "analyze": {
+            "description": "Read-only: explain, trace, execute or test code without changing the repo",
+            "mode": "primary",
+            "permission": {
+                "edit": "deny",
+                "codekit_write_function_implementation": "deny",
+                "codekit_remove_function_definition": "deny",
+                "bash": {
+                    "*": "deny",
+                    "ls*": "allow",
+                    "dir*": "allow",
+                    "git status*": "allow",
+                    "git diff*": "allow",
+                    "python *": "ask",
+                    "pytest *": "ask"
+                }
+            }
+        },
+        "implement": {
+            "description": "Complete or modify one function using codekit tools only",
+            "mode": "primary",
+            "permission": {
+                "edit": "deny",
+                "bash": {
+                    "*": "deny",
+                    "git status*": "allow",
+                    "git diff*": "allow",
+                    "pytest *": "ask"
+                }
+            }
+        }
+    }
+}

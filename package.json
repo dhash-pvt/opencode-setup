@@ -1,0 +1,88 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "codekit": {
+      "type": "local",
+      "command": [
+        "python",
+        "/abs/path/codekit_server.py"
+      ],
+      "enabled": true,
+      "environment": {
+        "CODEKIT_ROOT": "."
+      }
+    }
+  },
+  "permission": {
+    "*": "ask",
+    "read": "allow",
+    "grep": "allow",
+    "glob": "allow",
+    "list": "allow",
+    "edit": "ask",
+    "webfetch": "deny",
+    "websearch": "deny",
+    "external_directory": "deny",
+    "doom_loop": "ask",
+    "codekit_*": "allow",
+    "codekit_remove_function_definition": "ask",
+    "bash": {
+      "*": "ask",
+      "ls*": "allow",
+      "pwd": "allow",
+      "git status*": "allow",
+      "git diff*": "allow",
+      "git log*": "allow",
+      "pip *": "deny",
+      "pip3 *": "deny",
+      "uv *": "deny",
+      "conda *": "deny",
+      "npm *": "deny",
+      "git checkout*": "deny",
+      "git reset*": "deny",
+      "git commit*": "deny",
+      "git revert*": "deny",
+      "git stash*": "deny",
+      "git clean*": "deny",
+      "git restore*": "deny",
+      "rm *": "deny",
+      "sudo *": "deny",
+      "kill*": "deny",
+      "pkill*": "deny",
+      "curl *": "deny",
+      "wget *": "deny"
+    }
+  },
+  "agent": {
+    "analyze": {
+      "description": "Read-only: explain, trace, execute or test code without changing the repo",
+      "mode": "primary",
+      "permission": {
+        "edit": "deny",
+        "codekit_write_function_implementation": "deny",
+        "codekit_remove_function_definition": "deny",
+        "bash": {
+          "*": "deny",
+          "ls*": "allow",
+          "git status*": "allow",
+          "git diff*": "allow",
+          "python *": "ask",
+          "pytest *": "ask"
+        }
+      }
+    },
+    "implement": {
+      "description": "Complete or modify one function using codekit tools only",
+      "mode": "primary",
+      "permission": {
+        "edit": "deny",
+        "bash": {
+          "*": "deny",
+          "git status*": "allow",
+          "git diff*": "allow",
+          "pytest *": "ask"
+        }
+      }
+    }
+  }
+}
