@@ -8,8 +8,23 @@
                 "baseURL": "http://localhost:11434/v1"
             },
             "models": {
-                "qwen2.5-coder:7b": {
-                    "name": "Qwen2.5 Coder 7B"
+                "qwen2.5-coder-16k": {
+                    "name": "Qwen2.5 Coder 16k"
+                },
+                "qwen3-4b-16k": {
+                    "name": "Qwen3 4B 16k"
+                }
+            }
+        },
+        "kaggle": {
+            "npm": "@ai-sdk/openai-compatible",
+            "name": "Kaggle Ollama",
+            "options": {
+                "baseURL": "https://healthcare-pentium-hewlett-measure.trycloudflare.com/v1"
+            },
+            "models": {
+                "qwen3-8b-16k": {
+                    "name": "Qwen3 8B 16k (Kaggle)"
                 }
             }
         }
