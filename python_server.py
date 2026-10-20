@@ -4,7 +4,7 @@ from pathlib import Path
 from mcp.server.fastmcp import FastMCP
 
 mcp = FastMCP("codekit")
-ROOT = Path(os.environ.get("CODEKIT_ROOT", ".")).resolve()
+ROOT = Path(os.environ.get("CODEKIT_ROOT") or Path(__file__).resolve().parent).resolve()
 
 def _path(p: str) -> Path:
     path = (ROOT / p).resolve()

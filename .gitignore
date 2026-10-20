@@ -1,2 +1,21 @@
+# Virtual environment (the setup script rebuilds it per machine)
 venv/
+.venv/
+
+# Python caches
 __pycache__/
+*.pyc
+.pytest_cache/
+
+# Secrets and local environment
+.env
+.env.*
+!.env.example
+
+# Local Ollama model recipe, if you keep one in the project
+Modelfile
+
+# OS junk
+Thumbs.db
+Desktop.ini
+.DS_Store
